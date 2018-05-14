@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 19:45:32 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/05/10 20:27:28 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/04/05 14:25:41 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/04/09 14:11:00 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H 
-# define BUFF_SIZE 20
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+#include "libft.h"
 
-int	get_next_line(const int fd, char **line);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*sortie;
 
-#endif
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	sortie = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (sortie == NULL)
+		return (NULL);
+	sortie = ft_strcpy(sortie, s1);
+	sortie = ft_strcat(sortie, s2);
+	return (sortie);
+}

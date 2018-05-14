@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_srtmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 19:45:32 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/05/10 20:27:28 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/04/05 12:59:41 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/04/09 14:11:19 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H 
-# define BUFF_SIZE 20
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+#include "libft.h"
 
-int	get_next_line(const int fd, char **line);
+char	*ft_strmap(char const *s, char (*f)(char))
+{
+	char	*sortie;
+	int		i;
 
-#endif
+	if (s == NULL || f == NULL)
+		return (NULL);
+	sortie = ft_strnew(ft_strlen(s));
+	if (sortie == NULL)
+		return (NULL);
+	i = 0;
+	sortie = ft_strcpy(sortie, s);
+	while (sortie[i])
+	{
+		sortie[i] = f(s[i]);
+		i++;
+	}
+	return (sortie);
+}

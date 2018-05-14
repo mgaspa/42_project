@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 19:45:32 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/05/10 20:27:28 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/04/04 16:54:13 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/04/04 16:55:41 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H 
-# define BUFF_SIZE 20
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+#include "libft.h"
 
-int	get_next_line(const int fd, char **line);
+void	*ft_memchr(const void *src, int c, size_t n)
+{
+	unsigned char	*sortie;
+	unsigned char	chocolat;
+	size_t			i;
 
-#endif
+	i = 0;
+	chocolat = (unsigned char)c;
+	sortie = (unsigned char *)src;
+	while (n--)
+	{
+		if (sortie[i] == chocolat)
+			return (sortie + i);
+		i++;
+	}
+	return (NULL);
+}

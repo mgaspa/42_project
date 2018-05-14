@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/10 19:45:32 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/05/10 20:27:28 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/04/05 11:13:42 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/04/05 11:54:58 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H 
-# define BUFF_SIZE 20
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+#include "libft.h"
 
-int	get_next_line(const int fd, char **line);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	len_n;
 
-#endif
+	if (*needle == '\0')
+		return ((char *)haystack);
+	len_n = ft_strlen(needle);
+	while (*haystack != '\0' && len-- >= len_n)
+	{
+		if (*haystack == *needle && ft_memcmp(haystack, needle, len_n) == 0)
+			return ((char *)haystack);
+		haystack++;
+	}
+	return (NULL);
+}
