@@ -6,7 +6,7 @@
 #    By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/04 14:31:57 by mgaspa            #+#    #+#              #
-#    Updated: 2018/05/09 16:10:35 by mgaspa           ###   ########.fr        #
+#    Updated: 2018/06/22 15:33:51 by mgaspa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,24 +25,38 @@ SRC = ft_memset.c ft_bzero.c  ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c\
 	  ft_itoa.c ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c\
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 	  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
-	  ft_lstmap.c
-
+	  ft_lstmap.c ft_lstfree.c ft_strndup.c ft_strpart.c
+ 
 OBJ= $(SRC:.c=.o)
 
 GCC = gcc -Wall -Werror -Wextra
 
-.PHONY: all clean fclean re
 all: $(NAME)
 
 $(NAME):
+	@echo "|-------------------|"
+	@echo "|-      LIBFT      -|"
+	@echo "|-------------------|"
 	@$(GCC) -c $(SRC)
+	@echo "|-   COMPILE OK    -|"
+	@echo "|-------------------|"
 	@ar -rc libft.a $(OBJ)
+	@echo "|-    LIB  DONE    -|"
+	@echo "|-------------------|"
 
 clean:
 	@rm -f $(OBJ)
+	@echo "|-------------------|"
+	@echo "|-      CLEAN      -|"
+	@echo "|-------------------|"
+
+blan:
+	@echo ""
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "|-     FCLEAN      -|"
+	@echo "|-------------------|"
 	
 
-re: fclean  all
+re: fclean blan all

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/05 11:42:15 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/06/21 18:06:55 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/06/21 18:32:32 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/06/22 16:42:40 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+void	ft_lstfree(t_list **alst)
 {
-	char	*sortie;
-
-	sortie = (char *)malloc(sizeof(char) * (size + 1));
-	if (sortie == NULL)
-		return (NULL);
-	ft_memset(sortie, 0, (sizeof(char) * (size + 1)));
-	return (sortie);
+	while ((*alst)->next != NULL)
+	{
+		free((*alst)->content);
+		free(*alst);
+		*alst = (*alst)->next;
+	}
+	free((*alst)->content);
+	free(*alst);
+	*alst = NULL;
 }

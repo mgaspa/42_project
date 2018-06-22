@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strpart.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <mgaspa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/05 11:42:15 by mgaspa            #+#    #+#             */
-/*   Updated: 2018/06/21 18:06:55 by mgaspa           ###   ########.fr       */
+/*   Created: 2018/06/22 15:25:09 by mgaspa            #+#    #+#             */
+/*   Updated: 2018/06/22 16:47:56 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strpart(char *str, int n)
 {
-	char	*sortie;
+	char	*tmp;
+	int		i;
 
-	sortie = (char *)malloc(sizeof(char) * (size + 1));
-	if (sortie == NULL)
-		return (NULL);
-	ft_memset(sortie, 0, (sizeof(char) * (size + 1)));
-	return (sortie);
+	i = 0;
+	tmp = ft_strnew(ft_strlen(str) - n);
+	while (str[i + n])
+	{
+		tmp[i] = str[i + n];
+		++i;
+	}
+	return (tmp);
 }
